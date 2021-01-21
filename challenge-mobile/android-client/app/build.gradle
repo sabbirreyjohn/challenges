@@ -6,17 +6,20 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 28
     buildToolsVersion "30.0.2"
+    testOptions.unitTests.includeAndroidResources = true
 
     defaultConfig {
         applicationId "com.tamboon.androidclient"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "omise_public_key", omise_public_key)
+        buildConfigField("String", "omise_secret_key", omise_secret_key)
     }
 
     buildTypes {
@@ -46,12 +49,18 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //Material Component
     implementation 'com.google.android.material:material:1.2.1'
+
+    //Rx
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -77,4 +86,10 @@ dependencies {
     testImplementation "androidx.test:core-ktx:1.2.0"
     testImplementation "org.robolectric:robolectric:4.3.1"
     testImplementation "androidx.arch.core:core-testing:2.0.0"
+
+    //omise
+    implementation 'co.omise:omise-android:3.2.1'
+
+    //ImageLoader
+    implementation 'com.squareup.picasso:picasso:2.8'
 }

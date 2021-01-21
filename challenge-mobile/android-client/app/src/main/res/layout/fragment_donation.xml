@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="charity"
+            type="com.tamboon.androidclient.view.charityList.Charity" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_material_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/rl"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/ivLogo"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@mipmap/ic_launcher"></ImageView>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="100dp"
+                    android:layout_toRightOf="@id/ivLogo"
+                    android:gravity="center"
+                    android:text="@{charity.name}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_amount"
+            style="@style/CreditCardInputLayoutBoxes"
+            android:hint="@string/amount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_material_card">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_amount"
+                style="@style/InputEditTexts"
+                android:inputType="number"
+                android:maxLength="@integer/maximum_credit_card_number_length" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <co.omise.android.ui.CreditCardEditText
+            android:id="@+id/til_credit_card_number"
+            style="@style/CreditCardInputLayoutBoxes"
+            android:hint="@string/credit_card_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_amount">
+
+        </co.omise.android.ui.CreditCardEditText>
+
+        <co.omise.android.ui.ExpiryDateEditText
+            android:id="@+id/til_expiration_date"
+            style="@style/CreditCardInputLayoutBoxes"
+            android:layout_marginEnd="@dimen/inner_vertical_input_margin"
+            android:layout_marginRight="@dimen/inner_vertical_input_margin"
+            android:hint="@string/expiration_date"
+            app:layout_constraintEnd_toStartOf="@id/til_cvv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_credit_card_number">
+
+
+        </co.omise.android.ui.ExpiryDateEditText>>
+
+        <co.omise.android.ui.SecurityCodeEditText
+            android:id="@+id/til_cvv"
+            style="@style/CreditCardInputLayoutBoxes"
+            android:layout_marginStart="@dimen/inner_vertical_input_margin"
+            android:layout_marginLeft="@dimen/inner_vertical_input_margin"
+            android:hint="@string/cvv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/til_expiration_date"
+            app:layout_constraintTop_toBottomOf="@+id/til_credit_card_number">
+
+        </co.omise.android.ui.SecurityCodeEditText>>
+
+        <co.omise.android.ui.CardNameEditText
+            android:id="@+id/til_name"
+            style="@style/CreditCardInputLayoutBoxes"
+            android:hint="@string/first_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_expiration_date" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit_payment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/button_vertical_padding"
+            android:paddingBottom="@dimen/button_vertical_padding"
+            android:text="@string/pay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_name" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_submit_payment" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
