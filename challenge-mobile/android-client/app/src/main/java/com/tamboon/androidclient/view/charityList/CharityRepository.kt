@@ -2,17 +2,16 @@ package com.tamboon.androidclient.view.charityList
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.tamboon.androidclient.network.CharityApi
-import com.tamboon.androidclient.network.RetrofitInitializer
+import com.tamboon.androidclient.network.NetworkApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 object CharityRepository {
 
 
-    fun getCharities(charityApi: CharityApi): MutableLiveData<List<Charity>> {
+    fun getCharities(networkApi: NetworkApi): MutableLiveData<List<Charity>> {
         var ldCharities = MutableLiveData<List<Charity>>()
-        val disposable = charityApi.getCharities().subscribeOn(Schedulers.io())
+        val disposable = networkApi.getCharities().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).subscribe(
                 {
                     Log.i("Charities", it.toString())

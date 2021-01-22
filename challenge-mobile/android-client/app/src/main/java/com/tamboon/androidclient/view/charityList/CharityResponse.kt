@@ -1,4 +1,4 @@
-package com.tamboon.androidclient.network
+package com.tamboon.androidclient.view.charityList
 
 import com.tamboon.androidclient.view.charityList.Charity
 

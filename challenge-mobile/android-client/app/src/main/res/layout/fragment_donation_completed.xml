@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.donationCompleted.DonationCompletedFragment">
+
+    <data>
+
+        <variable
+            name="response"
+            type="com.tamboon.androidclient.model.ResponseType" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="50dp">
+
+        <TextView
+            android:id="@+id/tvResponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ivResponse"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@{response.message}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            tools:text="Donation process completed successfully" />
+
+        <ImageView
+            android:id="@+id/ivResponse"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="DONE" />
+    </RelativeLayout>
+</layout>

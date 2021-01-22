@@ -26,6 +26,26 @@
         <argument
             android:name="selectedCharity"
             app:argType="com.tamboon.androidclient.view.charityList.Charity" />
+        <action
+            android:id="@+id/action_donationFragment_to_donationCompletedFragment"
+            app:destination="@id/donationCompletedFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/donationCompletedFragment"
+        android:name="com.tamboon.androidclient.view.donationCompleted.DonationCompletedFragment"
+        android:label="fragment_donation_completed"
+        app:popUpTo="@id/charityListFragment"
+        tools:layout="@layout/fragment_donation_completed">
+
+        <argument
+            android:name="theResponse"
+            app:argType="com.tamboon.androidclient.model.ResponseType" />
+
 
     </fragment>
 </navigation>
